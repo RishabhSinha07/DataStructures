@@ -82,7 +82,19 @@ class LinkedList:
             count = count + 1
             temp = temp.next
         return count
+    def mergeLists(self,head1,head2):
+        if head1 is None:
 
+            return head2
+        if head2 is None:
+            return head1
+        if head1.data < head2.data:
+            head1.next = mergeLists(head1.next, head2)
+        if head2.data <= head1.data:
+            tem = head1
+            head1 = head2
+            head1.next = mergeLists(tem, head2.next)
+        return head1
 def merge_ll(ll1, ll2):
     new_list = LinkedList()
     #ll1 = 1,2,3,4,5
